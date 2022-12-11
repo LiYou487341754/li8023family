@@ -48,8 +48,6 @@ resIds = []
 for i in range(len(data)):
     titles.append(data[i]['title'])
     resIds.append(data[i]['resId'])
-resIds.pop(0)
-titles.pop(0)
 
 for j in range(len(resIds)):
     url = 'https://www.cqooc.com/json/my/res'
