@@ -1,6 +1,7 @@
 # 重庆高校课程下载
 import os
 import requests
+from tqdm import tqdm
 
 
 name = 'ps视频'
@@ -59,9 +60,11 @@ for j in range(len(resIds)):
     join_url = join_response['mp4File']
     join_url = join_url.split(',')
     mp4_url = 'https://video.cqooc.com/video_new/' + join_url[1]
-    mp4_response = session.get(url=mp4_url, headers=headers).content
-    with open(name + '/' + titles[j] + '.mp4', mode='wb')as f:
-        f.write(mp4_response)
-    print(titles[j] + '下载成功')
+    print(titles[j] + '正在下载')
+    for url in tqdm(mp4_url):
+        mp4_response = session.get(url=mp4_url, headers=headers).content
+        with open(name + '/' + titles[j] + '.mp4', mode='wb')as f:
+            f.write(mp4_response)
+        print(titles[j] + '下载成功')
 
 print('下载成功')
