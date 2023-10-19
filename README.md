@@ -100,5 +100,63 @@ print(" ".join(output))
 print("*".join(output))
 
 # 字符串驻留机制
-# 仅保存一份相同不可变字符串的方法,不同的值被放在字符串驻留池中,对于符合标识符规则的字符串(仅包含下划线(_)、字母、数字)会启用字符串驻留机制
+# 仅保存一份相同不可变字符串的方法,不同的值被放在字符串驻留池中,[对于符合标识符规则的字符串
+# (仅包含下划线(_)、字母、数字)交互模式下会启用字符串驻留机制],字符串只在编译时驻留，而非运行时
+a = 'abd_33'
+b = 'abd_33'
+print(a is b)
+c = 'li##'
+d = 'li##'
+print(c is d)
+print(id(c))
+print(id(d))
+str1 = 'li'
+str2 = 'jie'
+# str1+str2 is 'lijie'
 
+# 比较使用'=='和'!='
+print(str1 == str2)
+print(str1 != str2)
+print(str2)
+print(str1 + str2 == 'lijie')
+print(str2 + str2 != 'lijie')
+
+# 判断是否为同一对象 is / is not 比较的是id值
+print(a is b)
+print(a is not b)
+
+# 是否存在字符串中 in / not in
+
+print('l' in str1)
+print('l' not in str2)
+
+# 常用查找方法
+paragraph = '我是一名大三学生,重新对python语言进行巩固学习'
+print(len(paragraph))  # 获取字符串长度
+print(paragraph.startswith("我是"))  # 指定字符串开头
+print(paragraph.endswith("学习"))  # 指定字符串结尾
+print(paragraph.find("python"))  # 寻找第一次出现指定字符串的索引
+print(paragraph.rfind("巩固"))  # 寻找最后一次指定字符串的索引
+print(paragraph.count("语言"))  # 计算指定字符出现的次数
+print(paragraph.isalnum())  # 判断字符串全部是否是字母或数字
+print(paragraph.isdigit())  # 判断字符串全部是否是数字
+
+# 去除首尾信息
+paragraph = '我就是我'
+print(paragraph.strip("我"))  # 去除首尾指定字符
+print(paragraph.lstrip('我'))  # 去除左边指定字符
+print(paragraph.rstrip('我'))  # 去除右边指定字符
+
+# 大小写转换
+a = 'my love a gril'
+b = a.capitalize()  # 产生新的字符串,首字母大写
+print(b)
+b = a.title()  # 产生新的字符串,每个单词首字母大写
+print(b)
+b = a.upper()  # 产生新的字符串,每个字母转换成大写
+print(b)
+b = a.lower()  # 产生新的字符串,每个字母转换成小写
+print(b)
+b = a.swapcase()  # 产生新的字符串,每个字母大小写转换
+print(b)
+print(a)
